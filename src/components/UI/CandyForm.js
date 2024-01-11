@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { memo } from "react";
 import classes from "./CandyForm.module.css";
+import MealsContext from "../../store/Meals-context";
 const CandyForm = () => {
   //   const { addCandy } = useCandy();
   const [candy, setCandy] = useState({
@@ -8,7 +9,7 @@ const CandyForm = () => {
     description: "",
     price: "",
   });
-  console.log("candy form");
+  const mealCtx = useContext(MealsContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,7 +21,8 @@ const CandyForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // addCandy(candy);
+    const newItem = { ...candy, id: Math.random().toString() };
+    mealCtx.addItem(newItem);
     setCandy({
       name: "",
       description: "",
