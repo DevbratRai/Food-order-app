@@ -34,12 +34,12 @@ const SignUp = () => {
         if (response.data.error) {
           setError(response.data.error.message);
         } else {
-          console.log("User has successfully signed up");
+          console.log("User has successfully signed up ..");
           setError(null);
         }
       })
       .catch((error) => {
-        setError("Error connecting to the server");
+        setError("Error connecting to the server..");
       });
   };
 
